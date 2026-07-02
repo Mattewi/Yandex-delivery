@@ -1,0 +1,493 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стань курьером-партнером Яндекс Еды</title>
+    <style>
+        :root {
+            --primary-color: #FFCC00; /* Фирменный желтый Яндекс */
+            --text-dark: #111111;
+            --text-light: #555555;
+            --bg-light: #f9f9f9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1526367790999-0150786486a9?q=80&w=1200') no-repeat center center/cover;
+            background-color: var(--primary-color);
+            padding: 140px 0;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #e6b800;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            backdrop-filter: blur(5px);
+            border: 2px solid #ffffff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Instructions */
+        .instructions {
+            background-color: #ffffff;
+        }
+
+        .step-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .step-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-card p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .link-partner {
+            color: #0066cc;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .link-partner:hover {
+            color: #004499;
+        }
+
+        .note-box {
+            background-color: #fff9e6;
+            border: 1px dashed #ffcc00;
+            padding: 15px;
+
+
+border-radius: 10px;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Advantages */
+        .advantages {
+            background-color: var(--bg-light);
+        }
+
+        .grid-advantages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .adv-card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .adv-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .adv-card .icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .adv-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .adv-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* FAQ Accordion */
+        .faq {
+            background-color: #ffffff;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e5e5;
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--text-light);
+        }
+
+        .faq-answer p {
+            padding-top: 15px;
+        }
+
+        /* Footer & Telegram */
+        .footer {
+            background-color: var(--text-dark);
+            color: #ffffff;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .tg-box {
+            background-color: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 16px;
+            display: inline-block;
+            margin-bottom: 30px;
+            max-width: 600px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .tg-box p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-tg {
+            background-color: #24A1DE;
+            color: white;
+        }
+
+        .btn-tg:hover {
+            background-color: #1d82b5;
+            transform: translateY(-2px);
+        }
+
+        .bottom-action {
+            margin-top: 20px;
+        }
+
+        /* Adaptive */
+        max-width: 768px {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>Стань курьером-партнером и получай до 250 000 рублей в месяц</h1>
+            <div class="hero-buttons">
+                <a href="#instruction" class="btn btn-secondary">Читать инструкцию</a>
+                <a href="https://reg.eda.yandex.ru/?advertisement_campaign=forms_for_agents&user_invite_code=3970c687c10c4fe88d9c945a2b4800bf&utm_content=blank" target="_blank" class="btn btn-primary">Зарегистрироваться</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Instructions Section -->
+    <section id="instruction" class="instructions">
+        <div class="container">
+            <h2>Инструкция: как стать курьером-партнёром Яндекс Еды</h2>
+            
+            <div class="step-card">
+                <h3>✅ 1. Подача онлайн-заявки</h3>
+<p>Сначала нужно подать онлайн-заявку на официальном сайте. Для этого перейдите по ссылке: <a href="https://reg.eda.yandex.ru/?advertisement_campaign=forms_for_agents&user_invite_code=3970c687c10c4fe88d9c945a2b4800bf&utm_content=blank" target="_blank" class="link-partner">Зарегистрироваться</a>.</p>
+                <p>💼 В форме необходимо указать базовые данные: фамилию, имя, отчество, контактный номер телефона и адрес электронной почты. На указанный номер придёт SMS-сообщение с кодом подтверждения, который нужно ввести в соответствующее поле для верификации.</p>
+                
+                <div class="note-box">
+                    💡 Кстати, возможно ваш путь будет легче, если вы зарегистрируетесь по ссылке выше. ☝️ После ввода данных вам просто позвонят и все сделают за вас (ну если нет, то инструкция ниже 😀).
+                </div>
+            </div>
+
+            <div class="step-card">
+                <h3>📚 2. Обучение и тестирование</h3>
+                <p>После одобрения заявки кандидат получает доступ к обучающим материалам — коротким видеороликам и текстовым инструкциям. В них рассказывается о стандартах сервиса, правилах общения с клиентами и ресторанами, порядке действий в различных рабочих ситуациях. По завершении изучения материалов необходимо пройти небольшое онлайн-тестирование.</p>
+            </div>
+
+            <div class="step-card">
+                <h3>🏁 3. Активация аккаунта</h3>
+                <p>После онлайн-тестирования нужно скачать приложения <strong>Яндекс Про</strong> и <strong>Мой Налог</strong>. После этого необходимо в приложении Яндекс Про стать самозанятым, если вы еще этого не сделали (там очень просто разобраться).</p>
+                <p>Далее надо записаться в визит-центр через Яндекс Про (обычно свободное время есть уже на следующий день). В ходе активации происходит проверка предоставленных документов.</p>
+                <p>После успешной проверки документов курьеру выдаётся фирменный инвентарь: брендированная жёлтая или оранжевая куртка и большая термосумка для перевозки заказов (бесплатно). Затем происходит окончательная активация профиля в приложении «Яндекс Про», после чего можно выходить на линию и принимать первый заказ.</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://reg.eda.yandex.ru/?advertisement_campaign=forms_for_agents&user_invite_code=3970c687c10c4fe88d9c945a2b4800bf&utm_content=blank" target="_blank" class="btn btn-primary">Зарегистрироваться прямо сейчас</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="advantages">
+        <div class="container">
+            <h2>Плюсы Яндекс Еды</h2>
+            <div class="grid-advantages">
+                
+                <div class="adv-card">
+                    <div class="icon">💰</div>
+                    <h3>Гарантированная выплата</h3>
+                    <p>Минимальная оплата гарантирована даже при отсутствии заказов на слоте.</p>
+                </div>
+
+                <div class="adv-card">
+                    <div class="icon">🕒</div>
+                    <h3>Гибкий график</h3>
+                    <p>Вы сами полностью выбираете время и объём выполняемой работы.</p>
+                </div>
+
+                <div class="adv-card">
+                    <div class="icon">🛡️</div>
+                    <h3>Страхование 24/7</h3>
+                    <p>Две программы защиты — во время доставки и в личное время. Все расходы покрываются сервисом и страховой компанией.</p>
+                </div>
+
+                <div class="adv-card">
+                    <div class="icon">⚖️</div>
+                    <h3>Юридическая поддержка</h3>
+                    <p>До трёх бесплатных профессиональных консультаций ежемесячно.</p>
+                </div>
+
+                <div class="adv-card">
+                    <div class="icon">📦</div>
+                    <h3>Доплаты за тяжёлые заказы</h3>
+
+
+<p>За вес посылок от 10–15 кг предусмотрена специальная дополнительная выплата.</p>
+                </div>
+
+                <div class="adv-card">
+                    <div class="icon">⏳</div>
+                    <h3>Оплачиваемое ожидание</h3>
+                    <p>До 20 минут времени ожидания выдачи в ресторане полностью оплачивается.</p>
+                </div>
+
+                <div class="adv-card">
+                    <div class="icon">📈</div>
+                    <h3>Повышенные коэффициенты</h3>
+                    <p>В периоды высокого спроса (непогода, часы пик) оплата за каждый заказ увеличивается.</p>
+                </div>
+
+                <div class="adv-card">
+                    <div class="icon">💵</div>
+                    <h3>Чаевые полностью ваши</h3>
+                    <p>100 % оставленных клиентами чаевых переводятся курьеру.</p>
+                </div>
+
+                <div class="adv-card">
+                    <div class="icon">🎁</div>
+                    <h3>Бонусная программа</h3>
+                    <p>Дополнительные доплаты за количество выполненных заказов, часы пик и работу в выходные дни.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2>Ответы на популярные вопросы</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Можно ли устроиться курьером если нет 18 лет?</div>
+                <div class="faq-answer">
+                    <p>Можно, но только с 16 лет. Для этого вам понадобится письменное согласие родителей и паспорт. В остальных странах (кроме РФ) регистрация пока доступна только с 18 лет.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">В каких странах кроме России можно работать?</div>
+                <div class="faq-answer">
+                    <p>Если вы живёте в странах СНГ, то скорее всего Яндекс Еда у вас уже есть и вы можете пройти регистрацию.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Обязательно ли работать в определённые часы?</div>
+                <div class="faq-answer">
+                    <p>Нет, не обязательно. Вы сами выбираете, когда работать, но помните — чем больше заказов вы отвезли, тем больше будет ваша итоговая прибыль.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">После регистрации и получения короба я начинаю сразу работать?</div>
+                <div class="faq-answer">
+                    <p>Да — никаких испытательных сроков. Вы можете выходить на слоты и зарабатывать сразу после получения короба в визит-центре.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="tg-box">
+                <p> Остались вопросы? Задайте их в нашем Telegram-канале!</p>
+                <a href="https://t.me/Yandeks_kurers" target="_blank" class="btn btn-tg">Наш Telegram-канал</a>
+            </div>
+            <div class="bottom-action">
+                <a href="https://reg.eda.yandex.ru/?advertisement_campaign=forms_for_agents&user_invite_code=3970c687c10c4fe88d9c945a2b4800bf&utm_content=blank" target="_blank" class="btn btn-primary">Стать партнером Яндекс Еды</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Accordion Smooth Scroll -->
+    <script>
+        // FAQ Accordion logic
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active')
+
+
+;
+                
+                // Close all items
+                faqItems.forEach(el => {
+                    el.classList.remove('active');
+                    el.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                // If clicked item wasn't active, open it
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Smooth Scroll for elements
+        document.querySelector('a[href="#instruction"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#instruction').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
